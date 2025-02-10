@@ -31,8 +31,22 @@ def GetValue_byDate(appkey:str,appsecret:str,token:str,code:str,startDate:int,en
 
     headers = {
         "authorization":token,
-        "appkey":appkey
+        "appkey":appkey,
+        "appsecret":appsecret,
+        "tr_id":"FHKST03010100"
     }
+
+    params = {
+        "FID_COND_MRKT_DIV_CODE":"J",
+        "FID_INPUT_ISCD":code,
+        "FID_INPUT_DATE_1":startDate,
+        "FID_INPUT_DATE_2":endDate,
+        "FID_PERIOD_DIV_CODE":"D",
+        "FID_ORG_ADJ_PRC":"0"
+    }
+    res = requests.get(url,headers=headers,params=params)
+
+    
 
     return True
     
