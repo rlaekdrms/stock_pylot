@@ -3,7 +3,7 @@ import os
 import requests 
 from dotenv import load_dotenv
 from query import Query_currentPrice,GetValue_byDate
-
+from dataProcessing import GetFiltered_clpr
 
 load_dotenv()
 
@@ -19,4 +19,7 @@ token = Get_token(appkey,appsecret)
 
 # print(Query_currentPrice(appkey,appsecret,token,"000660")) 
 
-print(GetValue_byDate(appkey,appsecret,token,"000660","20250201","20250205"))
+# print(GetValue_byDate(appkey,appsecret,token,"000660","20250201","20250205"))
+
+data = GetValue_byDate(appkey,appsecret,token,"000660","20250201","20250205")
+GetFiltered_clpr(data)
