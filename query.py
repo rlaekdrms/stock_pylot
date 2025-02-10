@@ -26,7 +26,7 @@ def Query_currentPrice(appkey:str,appsecret:str,token:str,code:str):
 
     return stock_info
 
-def GetValue_byDate(appkey:str,appsecret:str,token:str,code:str,startDate:int,endDate:int):
+def GetValue_byDate(appkey:str,appsecret:str,token:str,code:str,startDate:str,endDate:str):
     url = "https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice"
 
     headers = {
@@ -48,5 +48,5 @@ def GetValue_byDate(appkey:str,appsecret:str,token:str,code:str,startDate:int,en
 
     
 
-    return True
+    return res.json()
     

@@ -2,7 +2,7 @@ from auth import Get_token
 import os
 import requests 
 from dotenv import load_dotenv
-from query import Query_currentPrice
+from query import Query_currentPrice,GetValue_byDate
 
 
 load_dotenv()
@@ -17,4 +17,6 @@ token = Get_token(appkey,appsecret)
 
 
 
-print(Query_currentPrice(appkey,appsecret,token,"000660")) 
+# print(Query_currentPrice(appkey,appsecret,token,"000660")) 
+
+print(GetValue_byDate(appkey,appsecret,token,"000660","20250201","20250205"))
