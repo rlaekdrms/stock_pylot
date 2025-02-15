@@ -15,11 +15,11 @@ appsecret = os.getenv("appsecret")
 
 token = Get_token(appkey,appsecret)
 
-
+# print(token)
 
 # print(Query_currentPrice(appkey,appsecret,token,"000660")) 
 
 # print(GetValue_byDate(appkey,appsecret,token,"000660","20250201","20250205"))
 
-data = GetValue_byDate(appkey,appsecret,token,"000660","20250201","20250205")
+data = GetValue_byDate(appkey,appsecret,token,"000660","20250101","20250131")
 GetFiltered_clpr(data)
