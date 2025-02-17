@@ -3,15 +3,16 @@ import pandas as pd
 
 def GetFiltered_clpr(data):
     result = {}
-    for row in data['output2']:
-        # print(row)
-        key = row['stck_bsop_date']
-        # print(newKey)
-        result[key] = row['stck_clpr']
-    print(result)
     columns = ["dates","values"]
     df = pd.DataFrame(columns=columns)
-    df["dates"] = result.keys()
-    df["values"] = result.values()
-    # print(result.keys(),result.values())
+
+    print(df)
+
+    for row in data['output2']:
+        newRow = pd.DataFrame([{"dates": row['stck_bsop_date'], "values": row['stck_clpr']}])
+        # print(newRow)
+        df = pd.concat([df, newRow], ignore_index=True)
+        # df = pd.concat([df, newRow])
+    
+    print(df)
     return result
