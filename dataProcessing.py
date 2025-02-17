@@ -8,10 +8,11 @@ def GetFiltered_clpr(data):
         key = row['stck_bsop_date']
         # print(newKey)
         result[key] = row['stck_clpr']
-    print(result)
     columns = ["dates","values"]
     df = pd.DataFrame(columns=columns)
-    result.keys()
-    result.values()
+    print (df.columns)
+    df["dates"] = result.keys()
+    df["values"] = result.values()
     # print(result.keys(),result.values())
+    print(df)
     return result
