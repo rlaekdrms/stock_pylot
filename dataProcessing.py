@@ -11,7 +11,7 @@ def GetFiltered_clpr(data):
     print(result)
     columns = ["dates","values"]
     df = pd.DataFrame(columns=columns)
-    result.keys()
-    result.values()
+    df["dates"] = result.keys()
+    df["values"] = result.values()
     # print(result.keys(),result.values())
     return result
