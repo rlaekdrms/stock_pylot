@@ -21,7 +21,7 @@ def Get_token(appkey:str,appsecret:str):
     except Exception as error:
         if res.json()['error_code'] == 'EGW00133':
             print("Too fast to get new Token. Use saved one.")
-            load_dotenv()
+            load_dotenv(override=True)
             access_token = os.getenv("token")
         else:
             print(error)
