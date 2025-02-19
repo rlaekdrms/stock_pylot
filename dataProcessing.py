@@ -13,8 +13,8 @@ def GetFiltered_clpr(data):
         key = row['stck_bsop_date']
         # print(newKey)
         result[key] = row['stck_clpr']
-    df.sort_values("dates",ascending=True)
-    print(df)
+    df_sorted_by_values = df.sort_values(by=["dates","values"],ascending=True)
     plt.plot(df["values"],"orange")
     plt.show()
+    print(df)
     return result
