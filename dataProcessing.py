@@ -8,8 +8,8 @@ def GetFiltered_clpr(data):
     df = pd.DataFrame(columns=columns)
 
     for row in data['output2']:
-        # dateText = f"{row['stck_bsop_date'][2:4]}/{row['stck_bsop_date'][4:6]}/{row['stck_bsop_date'][6:8]}"
-        dateText = f"{row['stck_bsop_date'][4:6]}/{row['stck_bsop_date'][6:8]}"
+        dateText = f"{row['stck_bsop_date'][2:4]}/{row['stck_bsop_date'][4:6]}/{row['stck_bsop_date'][6:8]}"
+        # dateText = f"{row['stck_bsop_date'][4:6]}/{row['stck_bsop_date'][6:8]}"
         new_row =  pd.DataFrame([{"dates":dateText,"values":int(row['stck_clpr'])}])
         df = pd.concat([df,new_row],ignore_index=True)
 
@@ -31,13 +31,10 @@ def GetFiltered_clpr(data):
     # TODO: X축 레이블 예쁘게 만들기
     ax.tick_params(axis='x', labelrotation=45)
 
-    # 1. 날짜를 45도 정도 기울여서 표시
-    # 2. 날짜를 "월/일" 형식으로 표시
-    # 3. 날짜를 45도 기울이고 "년/월/일"로 표시
-
     # plt.plot(df["dates"], df["values"],"orange")
-    fig.show()
-    fig.waitforbuttonpress()
+    # fig.show()
+    # fig.waitforbuttonpress()
+    fig.savefig(f"{data['output1']['stck_shrn_iscd']}_result.png")
 
     print(df)
 

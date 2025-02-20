@@ -21,5 +21,9 @@ token = Get_token(appkey,appsecret)
 
 # print(GetValue_byDate(appkey,appsecret,token,"000660","20250201","20250205"))
 
-data = GetValue_byDate(appkey,appsecret,token,"000660","20250115","20250217")
+queryStockNumber = input("주식번호를 입력하세요: ")
+queryStartDate = input("시작일을 입력하세요: ")
+queryEndDate = input("종료일을 입력하세요: ")
+
+data = GetValue_byDate(appkey,appsecret,token, queryStockNumber, queryStartDate, queryEndDate)
 GetFiltered_clpr(data)
