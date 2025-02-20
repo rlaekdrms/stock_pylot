@@ -15,7 +15,7 @@ appsecret = os.getenv("appsecret")
 
 token = Get_token(appkey,appsecret)
 
-# print(token)
+print(token)
 
 # print(Query_currentPrice(appkey,appsecret,token,"000660")) 
 
