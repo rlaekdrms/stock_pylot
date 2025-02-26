@@ -46,7 +46,4 @@ def GetValue_byDate(appkey:str,appsecret:str,token:str,code:str,startDate:str,en
     }
     res = requests.get(url,headers=headers,params=params)
 
-    
-    
     return res.json()
-    
