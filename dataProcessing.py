@@ -3,6 +3,29 @@ import numpy as np
 import pandas as pd
 
 
+def mean_average(data, mean_width):
+    new_array = []
+    mean_width = int(mean_width)
+    half_width = int(mean_width / 2)
+
+    # for _ in range(half_width):
+    #     new_array.append(0)
+
+    for idx, _ in enumerate(data):
+        if idx < half_width:
+            newValue = None
+        elif idx > len(data) - (half_width + 1):
+            newValue = None
+        else:
+            newValue = sum(data[idx - half_width : idx + half_width + 1]) / mean_width
+        new_array.append(newValue)
+
+    # for _ in range(half_width):
+    #     new_array.append(0)
+
+    return new_array
+
+
 def GetFiltered_clpr(data):
     columns = ["dates","values"]
     df = pd.DataFrame(columns=columns)
@@ -20,7 +43,18 @@ def GetFiltered_clpr(data):
 
     fig, ax = plt.subplots()
     df_sorted = df.sort_values("dates")
+
+    # 스무딩 처리
+    df_smoothed1 = mean_average(df_sorted["values"], 5)
+    df_smoothed2 = mean_average(df_sorted["values"], 15)
+    df_smoothed3 = mean_average(df_sorted["values"], 30)
+
     ax.plot(df_sorted["dates"], df_sorted["values"])
+    ax.plot(df_smoothed1, "orange")
+    ax.plot(df_smoothed2, "red")
+    ax.plot(df_smoothed3, "green")
+    ax.legend(["Original", "Smoothed1", "Smoothed2", "Smoothed3"])
+    # ax.legend(["Original", "Smoothed1"])
 
     # y축에 0원부터 표시됐으면 좋겠는데, 기간 내 최저가부터 표시가 됨. 이를 수정해야 함.
     # ax.set_ylim(bottom=0)
@@ -37,5 +71,4 @@ def GetFiltered_clpr(data):
     fig.savefig(f"{data['output1']['stck_shrn_iscd']}_result.png")
 
     print(df)
-
-    return df
+    return True
